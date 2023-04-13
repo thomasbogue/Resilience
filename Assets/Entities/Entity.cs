@@ -55,7 +55,6 @@ public class Entity : MonoBehaviour
 		transform.localEulerAngles = new Vector3();
 		float angle = Mathf.Atan2(localDir.y, localDir.x);
 		Vector3 eulerAngles = new Vector3(0.0f, 0.0f, angle * 180.0f / Mathf.PI + 270.0f);
-          Debug.Log("localDir = " + localDir + " angle=" + eulerAngles.z);
 		transform.localEulerAngles = eulerAngles;
     }
 
@@ -105,4 +104,19 @@ public class Entity : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    // utility function to locate the character
+    public Entity FindCharacter() {
+        MainCharacterController controller = transform.parent.GetComponentInChildren(typeof(MainCharacterController), false) as MainCharacterController;
+        if (controller != null) {
+            GameObject character = controller.gameObject;
+            Entity characterEntity = character.GetComponent<Entity>();
+            if (characterEntity == null) {
+                Debug.LogError("characters should have entity components, but this one doesn't???");
+            }
+            return characterEntity;
+        }
+        return null;
+    }
+
 }

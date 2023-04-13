@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 4761284230795511084}
   - component: {fileID: 4761284230795511083}
   - component: {fileID: 4761284230795511082}
-  - component: {fileID: 4761284230795511085}
   - component: {fileID: 4761284230795511080}
   - component: {fileID: 1493980306347851665}
   - component: {fileID: -658369860294970022}
@@ -156,26 +155,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &4761284230795511085
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4761284230795511087}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 653e8c4c22dd3bcb792fa694e5a0f2f4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  frames:
-  - {fileID: 453355008, guid: 9611b036ed4151eb1ad13c00a80e4d5c, type: 3}
-  - {fileID: 1829297494, guid: 9611b036ed4151eb1ad13c00a80e4d5c, type: 3}
-  - {fileID: -334119483, guid: 9611b036ed4151eb1ad13c00a80e4d5c, type: 3}
-  - {fileID: -933841210, guid: 9611b036ed4151eb1ad13c00a80e4d5c, type: 3}
-  - {fileID: -667850452, guid: 9611b036ed4151eb1ad13c00a80e4d5c, type: 3}
-  - {fileID: -1831493695, guid: 9611b036ed4151eb1ad13c00a80e4d5c, type: 3}
-  paused: 0
 --- !u!114 &4761284230795511080
 MonoBehaviour:
   m_ObjectHideFlags: 0

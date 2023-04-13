@@ -13,26 +13,17 @@ public class BomberController : MonoBehaviour
         if ((entity = GetComponent<Entity>()) == null) {
             Debug.Log("This requires an Entity component");
         }
-        FindCharacter();
+        characterEntity = entity.FindCharacter();
     }
 
     // Update is called once per frame
     void Update() {
         if (character == null) {
-            FindCharacter();
+            characterEntity = entity.FindCharacter();
+            character = characterEntity.gameObject;
             return;
         }
         entity.AccelerateToward(character.transform.position);
     }
     
-    void FindCharacter() {
-        MainCharacterController controller = transform.parent.GetComponentInChildren(typeof(MainCharacterController), false) as MainCharacterController;
-        if (controller != null) {
-            character = controller.gameObject;
-            characterEntity = character.GetComponent<Entity>();
-            if (characterEntity == null) {
-                Debug.LogError("characters should have entity components, but this one doesn't???");
-            }
-        }
-    }
 }
