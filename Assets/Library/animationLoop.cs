@@ -10,9 +10,9 @@ public class animationLoop : MonoBehaviour
 	private SpriteRenderer spriteRenderer;
 	private int framenum;
 	private float internalTime;
-    private Entity entity;
+     private Entity entity;
 
-	private Sprite[] frames {get {return entity.entityType.frames;} }
+	public Sprite[] frames;
 	[Tooltip("frames per second that will be cycled through")]
 	private float frameRate {get {return entity.entityType.frameRate;} }
 	public bool paused = false;

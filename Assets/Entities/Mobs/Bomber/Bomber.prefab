@@ -61,6 +61,7 @@ MonoBehaviour:
   wounds: 0
   velocity: {x: 0, y: 0, z: 0}
   acceleration: {x: 0, y: 0, z: 0}
+  strengths: []
   onWound:
     m_PersistentCalls:
       m_Calls: []
@@ -167,6 +168,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 653e8c4c22dd3bcb792fa694e5a0f2f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  frames:
+  - {fileID: 453355008, guid: 9611b036ed4151eb1ad13c00a80e4d5c, type: 3}
+  - {fileID: 1829297494, guid: 9611b036ed4151eb1ad13c00a80e4d5c, type: 3}
+  - {fileID: -334119483, guid: 9611b036ed4151eb1ad13c00a80e4d5c, type: 3}
+  - {fileID: -933841210, guid: 9611b036ed4151eb1ad13c00a80e4d5c, type: 3}
+  - {fileID: -667850452, guid: 9611b036ed4151eb1ad13c00a80e4d5c, type: 3}
+  - {fileID: -1831493695, guid: 9611b036ed4151eb1ad13c00a80e4d5c, type: 3}
   paused: 0
 --- !u!114 &4761284230795511080
 MonoBehaviour:
