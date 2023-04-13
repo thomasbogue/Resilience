@@ -14,7 +14,11 @@ public class Entity : MonoBehaviour
     public UnityEvent onWound;
     public UnityEvent onDeath;
 
-    public float maxAcceleration { get {return entityType.speed / entityType.responseTime;} }
+    [Tooltip("the maximum acceleration forward or backward")]
+    public float maxAcceleration { get {return maxSpeed / responseTime;} }
+    [Tooltip("the maximum acceleration to the side (i.e. to turn)")]
+    public float responseTime { get {return entityType.responseTime;} }
+    public float maxTurningAcceleration { get {return Mathf.PI * maxSpeed / responseTime ;}}
     public float maxSpeed { get {
         float speed = entityType.speed;
         foreach(Strength strength in strengths) {
@@ -25,7 +29,6 @@ public class Entity : MonoBehaviour
     public float size { get {return entityType.size;} }
     public float damage { get {return entityType.damage;} }
     public float maxHealth { get {return entityType.maxHealth;} }
-    public float responseTime { get {return entityType.responseTime;} }
 
     void Startup() {
         onWound.Invoke();
@@ -47,21 +50,43 @@ public class Entity : MonoBehaviour
      	velocity = finalVelocity;
     }
 
+    public void TurnInDirection(Vector3 dir) {
+          Vector3 localDir = transform.parent.InverseTransformVector(dir);
+		transform.localEulerAngles = new Vector3();
+		float angle = Mathf.Atan2(localDir.y, localDir.x);
+		Vector3 eulerAngles = new Vector3(0.0f, 0.0f, angle * 180.0f / Mathf.PI + 270.0f);
+          Debug.Log("localDir = " + localDir + " angle=" + eulerAngles.z);
+		transform.localEulerAngles = eulerAngles;
+    }
+
     // target is the global vector to point toward.  Rotations should keep the object in the canvas
 	public void TurnToward(Vector3 target) {
-		transform.localEulerAngles = new Vector3();
-		Vector3 localTarget = transform.parent.InverseTransformVector(target);
-		float angle = Mathf.Atan2(localTarget.y, localTarget.x);
-		Vector3 eulerAngles = new Vector3(0.0f, 0.0f, angle * 180.0f / Mathf.PI + 270.0f);
-		transform.localEulerAngles = eulerAngles;
+		Vector3 localTarget = transform.parent.TransformVector(transform.parent.InverseTransformVector(target));
+          TurnInDirection(localTarget);
 	}
 
     public void AccelerateToward(Vector3 position, bool faceForward) {
         Vector3 delta = position - transform.position;
-        acceleration = delta.normalized * maxAcceleration;
+        acceleration = 10f * delta.normalized * maxAcceleration;
+        NormalizeAcceleration();
         if (faceForward) {
-            TurnToward(position);
+            TurnInDirection(velocity);
         }
+    }
+
+    // limits the acceleration to maxAcceleration
+    public void NormalizeAcceleration() {
+        Vector3 accelerationForward = Vector3.Project(acceleration, velocity);
+        Vector3 accelerationSideways = acceleration - accelerationForward;
+        float accelerationForwardMag = accelerationForward.magnitude;
+        if (accelerationForwardMag > maxAcceleration) {
+            accelerationForward = accelerationForward * maxAcceleration / accelerationForwardMag;
+        }
+        float accelerationSidewaysMag = accelerationSideways.magnitude;
+        if (accelerationSidewaysMag > maxTurningAcceleration) {
+            accelerationSideways = accelerationSideways * maxTurningAcceleration / accelerationSidewaysMag;
+        }
+        acceleration = accelerationForward + accelerationSideways;
     }
 
     public void AccelerateToward(Vector3 position) {

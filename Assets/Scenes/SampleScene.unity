@@ -839,6 +839,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 731456889}
     m_Modifications:
+    - target: {fileID: 827005630861757411, guid: ad560eef569d95b82a209358a7f58e44, type: 3}
+      propertyPath: frames.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 827005630861757411, guid: ad560eef569d95b82a209358a7f58e44, type: 3}
+      propertyPath: frames.Array.data[0]
+      value: 
+      objectReference: {fileID: -784242502, guid: e1c4dd78a86a9e390be834bd01c5a48f, type: 3}
+    - target: {fileID: 827005630861757411, guid: ad560eef569d95b82a209358a7f58e44, type: 3}
+      propertyPath: frames.Array.data[1]
+      value: 
+      objectReference: {fileID: -1293978013, guid: e1c4dd78a86a9e390be834bd01c5a48f, type: 3}
     - target: {fileID: 2040289394586221583, guid: ad560eef569d95b82a209358a7f58e44, type: 3}
       propertyPath: m_Name
       value: Character

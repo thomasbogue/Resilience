@@ -7,6 +7,7 @@ public class EntityType : ScriptableObject {
     public float maxHealth=100.0f;
     public float speed=100.0f;
     public float responseTime=1.0f;
+    public float turnTime=2.0f;
     //public Sprite[] frames;
     public float frameRate=1.0f;
     public bool friction=true;

@@ -15,13 +15,7 @@ MonoBehaviour:
   maxHealth: 10
   speed: 1.5
   responseTime: 3
-  frames:
-  - {fileID: 453355008, guid: 9611b036ed4151eb1ad13c00a80e4d5c, type: 3}
-  - {fileID: 1829297494, guid: 9611b036ed4151eb1ad13c00a80e4d5c, type: 3}
-  - {fileID: -334119483, guid: 9611b036ed4151eb1ad13c00a80e4d5c, type: 3}
-  - {fileID: -933841210, guid: 9611b036ed4151eb1ad13c00a80e4d5c, type: 3}
-  - {fileID: -667850452, guid: 9611b036ed4151eb1ad13c00a80e4d5c, type: 3}
-  - {fileID: -1831493695, guid: 9611b036ed4151eb1ad13c00a80e4d5c, type: 3}
+  turnTime: 12
   frameRate: 0.25
   friction: 1
   size: 0.25
