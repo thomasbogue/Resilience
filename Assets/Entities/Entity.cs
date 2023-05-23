@@ -18,7 +18,7 @@ public class Entity : MonoBehaviour
     public float maxAcceleration { get {return maxSpeed / responseTime;} }
     [Tooltip("the maximum acceleration to the side (i.e. to turn)")]
     public float responseTime { get {return entityType.responseTime;} }
-    public float maxTurningAcceleration { get {return Mathf.PI * maxSpeed / responseTime ;}}
+    public float maxTurningAcceleration { get {return Mathf.PI * maxSpeed / entityType.turnTime;}}
     public float maxSpeed { get {
         float speed = entityType.speed;
         foreach(Strength strength in strengths) {
@@ -83,6 +83,7 @@ public class Entity : MonoBehaviour
         }
         float accelerationSidewaysMag = accelerationSideways.magnitude;
         if (accelerationSidewaysMag > maxTurningAcceleration) {
+            Debug.Log("capping the acceleration of " + this.name + " a=" + accelerationSidewaysMag + " amax=" + maxTurningAcceleration);
             accelerationSideways = accelerationSideways * maxTurningAcceleration / accelerationSidewaysMag;
         }
         acceleration = accelerationForward + accelerationSideways;
