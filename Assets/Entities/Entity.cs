@@ -83,6 +83,7 @@ public class Entity : MonoBehaviour
         }
         float accelerationSidewaysMag = accelerationSideways.magnitude;
         if (accelerationSidewaysMag > maxTurningAcceleration) {
+            Debug.Log("capping the acceleration of " + this.name + " a=" + accelerationSidewaysMag + " amax=" + maxTurningAcceleration);
             accelerationSideways = accelerationSideways * maxTurningAcceleration / accelerationSidewaysMag;
         }
         acceleration = accelerationForward + accelerationSideways;
